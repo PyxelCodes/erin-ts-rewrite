@@ -1,4 +1,4 @@
-const winston = require("winston")
+import winston from 'winston'
 const colorizer = winston.format.colorize();
 
 const logger = winston.createLogger({
@@ -6,7 +6,7 @@ const logger = winston.createLogger({
   format: winston.format.combine(
     winston.format.timestamp(),
     winston.format.simple(),
-    winston.format.printf(msg => 
+    winston.format.printf(msg =>
       colorizer.colorize(msg.level, `${msg.timestamp} - ${msg.level}: ${msg.message}`)
     )
   ),
@@ -15,4 +15,4 @@ const logger = winston.createLogger({
   ]
 });
 
-module.exports = logger;
+export default logger;
